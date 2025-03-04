@@ -8,13 +8,13 @@ class CustomSearchIcon extends StatelessWidget {
     return GestureDetector(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.withValues(alpha: (0.1)),
+          color: Colors.grey.withValues(alpha: (0.15)),
           borderRadius: BorderRadius.circular(15),
         ),
         height: 45,
         width: 45,
 
-        child: Icon(Icons.search, size: 28),
+        child: const Icon(Icons.search, size: 28),
       ),
     );
   }

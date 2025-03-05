@@ -12,6 +12,8 @@ class NotesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        primaryColor: Colors.white,
+        // primaryColorDark: Colors.,
         brightness: Brightness.dark,
         fontFamily: 'Poppins',
         floatingActionButtonTheme: FloatingActionButtonThemeData(

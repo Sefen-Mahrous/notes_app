@@ -29,13 +29,11 @@ class CustomTextField extends StatelessWidget {
         ),
         border: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: const Color.fromARGB(255, 141, 140, 140),
-          ),
+          borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.4)),
         ),
         hintText: hint,
         label: Text(label ?? ''),
-        labelStyle: TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
         hintStyle: TextStyle(color: Colors.white),
       ),
     );

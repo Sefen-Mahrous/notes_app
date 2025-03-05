@@ -14,16 +14,28 @@ class EditNoteView extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 45),
-              CustomAppBar(title: 'Edit Note'),
+              CustomAppBar(icon: Icons.check_sharp, title: 'Edit Note'),
               SizedBox(height: 15),
-              CustomTextField(hint: 'Title', label: 'add title'),
-              SizedBox(height: 15),
-
-              CustomTextField(maxLines: 25),
+              EditNoteViewBody(),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class EditNoteViewBody extends StatelessWidget {
+  const EditNoteViewBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CustomTextField(hint: 'Title', label: 'add title'),
+        SizedBox(height: 15),
+        CustomTextField(maxLines: 25),
+      ],
     );
   }
 }

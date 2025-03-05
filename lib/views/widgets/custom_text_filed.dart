@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String hint;
-  final String label;
+  final String? hint;
+  final String? label;
   final int maxLines;
   final Function(String)? onChanged;
   const CustomTextField({
     super.key,
     this.onChanged,
-    required this.hint,
-    required this.label,
+    @required this.hint,
+    @required this.label,
     this.maxLines = 1,
   });
 
@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
         hintText: hint,
-        label: Text(label),
+        label: Text(label ?? ''),
         labelStyle: TextStyle(color: Colors.white),
         hintStyle: TextStyle(color: Colors.white),
       ),

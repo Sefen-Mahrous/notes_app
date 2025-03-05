@@ -7,25 +7,31 @@ class AddNoteButtomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.6,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CustomTextField(hint: 'Add Note Title', label: 'Title'),
-              SizedBox(height: 15),
-              const CustomTextField(
-                maxLines: 5,
-                hint: 'Add Content',
-                label: 'Content',
+              Column(
+                children: [
+                  const CustomTextField(hint: 'Add Note Title', label: 'Title'),
+                  SizedBox(height: 15),
+                  const CustomTextField(
+                    maxLines: 5,
+                    hint: 'Add Content',
+                    label: 'Content',
+                  ),
+                ],
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.13),
+
+              CustomElevatedButton(onTap: () {}, buttonName: 'Add'),
             ],
           ),
-
-          CustomElevatedButton(onTap: () {}, buttonName: 'Add'),
-        ],
+        ),
       ),
     );
   }

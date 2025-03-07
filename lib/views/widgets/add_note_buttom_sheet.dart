@@ -11,27 +11,64 @@ class AddNoteButtomSheet extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.6,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  const CustomTextField(hint: 'Add Note Title', label: 'Title'),
-                  SizedBox(height: 15),
-                  const CustomTextField(
-                    maxLines: 5,
-                    hint: 'Add Content',
-                    label: 'Content',
-                  ),
-                ],
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.13),
+        child: SingleChildScrollView(child: AddNoteForm()),
+      ),
+    );
+  }
+}
 
-              CustomElevatedButton(onTap: () {}, buttonName: 'Add'),
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({super.key});
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, subTitle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            children: [
+              CustomTextField(
+                onSaved: (value) {
+                  title = value;
+                },
+                hint: 'Add Note Title',
+                label: 'Title',
+              ),
+              const SizedBox(height: 15),
+              CustomTextField(
+                onSaved: (value) {
+                  subTitle = value;
+                },
+                maxLines: 5,
+                hint: 'Add Content',
+                label: 'Content',
+              ),
             ],
           ),
-        ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.13),
+          CustomElevatedButton(
+            onTap: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+            buttonName: 'Add',
+          ),
+        ],
       ),
     );
   }
